@@ -1,11 +1,11 @@
 Name:           ChezScheme
 Summary:        Chez Scheme is an efficient and reliable implementation of Scheme based on an incremental optimizing compiler that produces efficient code and does so quickly. 
-Version:        9.6
+Version:        9.5
 Release:        1%{?dist}
 URL:            http://cisco.github.io/ChezScheme
 VCS:            https://github.com/cisco/ChezScheme
 License:        Apache-2.0
-Source0:         https://github.com/cisco/ChezScheme/archive/v%{version}.tar.gz
+Source0:        https://github.com/cisco/ChezScheme/archive/v%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  make
@@ -41,8 +41,5 @@ rm -rf $RPM_BUILD_ROOT
 %license LICENSE
 
 %changelog
-* Sat May 19 2018 Quentin Dufour <quentin@dufour.io> 9.6-1
-- new package built with tito
-
 * Sat May 19 2018 Quentin Dufour <quentin@dufour.io> - 9.5-1
 - Initial packaging of Chez Scheme
