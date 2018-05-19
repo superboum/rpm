@@ -41,5 +41,8 @@ rm -rf $RPM_BUILD_ROOT
 %license LICENSE
 
 %changelog
+* Sat May 19 2018 Quentin Dufour <quentin@dufour.io> 9.5-1
+- move files (quentin@dufour.io)
+
 * Sat May 19 2018 Quentin Dufour <quentin@dufour.io> - 9.5-1
 - Initial packaging of Chez Scheme
