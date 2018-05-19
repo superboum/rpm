@@ -1,4 +1,6 @@
-Name:           ChezScheme
+%global debug_package %{nil}
+
+Name:           chez-scheme
 Summary:        Chez Scheme is an efficient and reliable implementation of Scheme based on an incremental optimizing compiler that produces efficient code and does so quickly. 
 Version:        9.5
 Release:        1%{?dist}
@@ -13,6 +15,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  libX11-devel
 
 Patch0:         chez-scheme-xlocale.patch
+Patch1:         chez-scheme-symlink.patch
 
 %description
 Chez Scheme is both a programming language and an implementation of that language, with supporting tools and documentation.
@@ -28,17 +31,21 @@ The run-time system interfaces with the operating system and supports, among oth
 The programming environment includes a source-level debugger, a mechanism for producing HTML displays of profile counts and program "hot spots" when profiling is enabled during compilation, tools for inspecting memory usage, and an interactive shell interface (the expression editor, or "expeditor" for short) that supports multi-line expression editing. 
 
 %prep
-%autosetup -p 1
+%autosetup -n ChezScheme-%{version} -p 1
 
 %build
-%configure
+./configure --installbin=%{_bindir} --installlib=%{_libdir} --installman=%{_mandir} --temproot=%{buildroot}
 make CFLAGS=-Wno-format-truncation
 
 %install
-rm -rf $RPM_BUILD_ROOT 
 %makeinstall
 
-%license LICENSE
+%files
+%{_bindir}/petite
+%{_bindir}/scheme
+%{_bindir}/scheme-script
+%{_libdir}/csv9.5/*
+%{_mandir}/man1/*.1.*
 
 %changelog
 * Sat May 19 2018 Quentin Dufour <quentin@dufour.io> - 9.5-1
