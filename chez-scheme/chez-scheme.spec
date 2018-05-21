@@ -5,7 +5,6 @@ Summary:        Chez Scheme is an efficient and reliable implementation of Schem
 Version:        9.5
 Release:        1%{?dist}
 URL:            http://cisco.github.io/ChezScheme
-VCS:            https://github.com/cisco/ChezScheme
 License:        Apache-2.0
 Source0:        https://github.com/cisco/ChezScheme/archive/v%{version}.tar.gz
 
