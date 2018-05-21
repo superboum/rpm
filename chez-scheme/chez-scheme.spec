@@ -13,6 +13,7 @@ BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  curl
+BuildRequires:  ca-certificates
 
 %if %is_mageia
 BuildRequires: lib64x11-devel
@@ -45,7 +46,7 @@ The programming environment includes a source-level debugger, a mechanism for pr
 make CFLAGS=-Wno-format-truncation
 
 %install
-%makeinstall
+%make_install
 
 %files
 %{_bindir}/petite
