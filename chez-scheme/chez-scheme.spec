@@ -1,4 +1,5 @@
 %global debug_package %{nil}
+%define is_mageia %(test -e /etc/mageia-release && echo 1 || echo 0)
 
 Name:           chez-scheme
 Summary:        Chez Scheme is an efficient and reliable implementation of Scheme based on an incremental optimizing compiler that produces efficient code and does so quickly. 
@@ -11,7 +12,14 @@ Source0:        https://github.com/cisco/ChezScheme/archive/v%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  ncurses-devel
+BuildRequires:  curl
+
+%if %is_mageia
+BuildRequires: lib64x11-devel
+%else
 BuildRequires:  libX11-devel
+%endif
+
 
 Patch0:         chez-scheme-xlocale.patch
 Patch1:         chez-scheme-symlink.patch
