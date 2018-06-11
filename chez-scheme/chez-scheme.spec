@@ -4,7 +4,7 @@
 Name:           chez-scheme
 Summary:        Chez Scheme is an efficient and reliable implementation of Scheme based on an incremental optimizing compiler that produces efficient code and does so quickly. 
 Version:        9.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            http://cisco.github.io/ChezScheme
 License:        Apache-2.0
 Source0:        https://github.com/cisco/ChezScheme/archive/v%{version}.tar.gz
@@ -56,5 +56,8 @@ make CFLAGS=-Wno-format-truncation
 %{_mandir}/man1/*.1.*
 
 %changelog
+* Mon Jun 11 2018 Quentin Dufour <quentin@dufour.io> - 9.5-2
+- Update symlink patch to use a hard link instead as recommended in https://github.com/cisco/ChezScheme/pull/307
+
 * Sat May 19 2018 Quentin Dufour <quentin@dufour.io> - 9.5-1
 - Initial packaging of Chez Scheme

@@ -6,7 +6,7 @@ diff -Naur csv9.5-src/makefiles/Mf-install.in csv9.5/makefiles/Mf-install.in
            ln -f ${LibBin}/scheme.boot ${LibBin}/${InstallSchemeName}.boot;\
          fi
 -	ln -sf ${LibBin}/scheme.boot ${LibBin}/${InstallScriptName}.boot;
-+	ln -sf ${InstallLibBin}/scheme.boot ${LibBin}/${InstallScriptName}.boot;
++	ln -f ${LibBin}/scheme.boot ${LibBin}/${InstallScriptName}.boot;
  	$I -m 444 ${Include}/scheme.h ${LibBin}
  
  maninstall: scheme.1 petite.1 ${Man}
