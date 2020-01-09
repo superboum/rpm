@@ -3,17 +3,18 @@
 
 Name:           chez-scheme
 Summary:        Chez Scheme is an efficient and reliable implementation of Scheme based on an incremental optimizing compiler that produces efficient code and does so quickly. 
-Version:        9.5
-Release:        2%{?dist}
+Version:        9.5.2
+Release:        1%{?dist}
 URL:            http://cisco.github.io/ChezScheme
 License:        Apache-2.0
-Source0:        https://github.com/cisco/ChezScheme/archive/v%{version}.tar.gz
+Source0:        https://github.com/cisco/ChezScheme/archive/v%{version}.tar.gz#/ChezScheme-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  curl
 BuildRequires:  ca-certificates
+BuildRequires:  libuuid-devel
 
 %if %is_mageia
 BuildRequires: lib64x11-devel
@@ -22,8 +23,8 @@ BuildRequires:  libX11-devel
 %endif
 
 
-Patch0:         chez-scheme-xlocale.patch
-Patch1:         chez-scheme-symlink.patch
+#Patch0:         chez-scheme-xlocale.patch
+#Patch1:         chez-scheme-symlink.patch
 
 %description
 Chez Scheme is both a programming language and an implementation of that language, with supporting tools and documentation.
@@ -42,7 +43,7 @@ The programming environment includes a source-level debugger, a mechanism for pr
 %autosetup -n ChezScheme-%{version} -p 1
 
 %build
-./configure --installbin=%{_bindir} --installlib=%{_libdir} --installman=%{_mandir} --temproot=%{buildroot}
+./configure --installbin=%{_bindir} --installlib=%{_libdir} --installman=%{_mandir} --temproot=%{buildroot} --threads
 make CFLAGS=-Wno-format-truncation
 
 %install
@@ -52,10 +53,15 @@ make CFLAGS=-Wno-format-truncation
 %{_bindir}/petite
 %{_bindir}/scheme
 %{_bindir}/scheme-script
-%{_libdir}/csv9.5/*
+%{_libdir}/csv%{version}/*
 %{_mandir}/man1/*.1.*
 
 %changelog
+* Thu Jan  9 2020 Jens Petersen <petersen@redhat.com> - 9.5.2-1
+- update to 9.5.2
+- enable threads
+- drop patches
+
 * Mon Jun 11 2018 Quentin Dufour <quentin@dufour.io> - 9.5-2
 - Update symlink patch to use a hard link instead as recommended in https://github.com/cisco/ChezScheme/pull/307
 
