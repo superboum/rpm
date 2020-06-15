@@ -1,0 +1,12 @@
+diff -Naur ChezScheme-9.5.2/makefiles/Mf-install.in ChezScheme-9.5.2-patch1/makefiles/Mf-install.in
+--- ChezScheme-9.5.2/makefiles/Mf-install.in	2019-03-21 23:05:24.000000000 +0100
++++ ChezScheme-9.5.2-patch1/makefiles/Mf-install.in	2020-06-15 16:23:08.065009916 +0200
+@@ -99,7 +99,7 @@
+ I=./installsh -o "${InstallOwner}" -g "${InstallGroup}"
+ 
+ bininstall: ${Bin}
+-	$I -m 555 ${Scheme} ${SchemePath}
++	$I -m 755 ${Scheme} ${SchemePath}
+ 	ln -f ${SchemePath} ${PetitePath}
+ 	ln -f ${SchemePath} ${SchemeScriptPath}
+ 
