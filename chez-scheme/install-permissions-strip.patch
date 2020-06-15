@@ -1,6 +1,6 @@
 diff -Naur ChezScheme-9.5.2/makefiles/Mf-install.in ChezScheme-9.5.2-patch1/makefiles/Mf-install.in
 --- ChezScheme-9.5.2/makefiles/Mf-install.in	2019-03-21 23:05:24.000000000 +0100
-+++ ChezScheme-9.5.2-patch1/makefiles/Mf-install.in	2020-06-15 16:23:08.065009916 +0200
++++ ChezScheme-9.5.2-patch1/makefiles/Mf-install.in	2020-06-15 16:44:26.628630491 +0200
 @@ -99,7 +99,7 @@
  I=./installsh -o "${InstallOwner}" -g "${InstallGroup}"
  
@@ -10,3 +10,14 @@ diff -Naur ChezScheme-9.5.2/makefiles/Mf-install.in ChezScheme-9.5.2-patch1/make
  	ln -f ${SchemePath} ${PetitePath}
  	ln -f ${SchemePath} ${SchemeScriptPath}
  
+@@ -115,8 +115,8 @@
+           ln -f ${LibBin}/scheme.boot ${LibBin}/${InstallSchemeName}.boot;\
+         fi
+ 	ln -f ${LibBin}/scheme.boot ${LibBin}/${InstallScriptName}.boot;
+-	$I -m 444 ${Include}/kernel.o ${LibBin}
+-	$I -m 444 ${Include}/main.o ${LibBin}
++	$I -m 644 ${Include}/kernel.o ${LibBin}
++	$I -m 644 ${Include}/main.o ${LibBin}
+ 	$I -m 444 ${Include}/scheme.h ${LibBin}
+ 
+ maninstall: scheme.1 petite.1 ${Man}
