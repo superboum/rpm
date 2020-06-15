@@ -4,7 +4,7 @@
 Name:           chez-scheme
 Summary:        Chez Scheme is an efficient and reliable implementation of Scheme based on an incremental optimizing compiler that produces efficient code and does so quickly. 
 Version:        9.5.2
-Release:        2%{?dist}
+Release:        1%{?dist}
 URL:            http://cisco.github.io/ChezScheme
 License:        Apache-2.0
 Source0:        https://github.com/cisco/ChezScheme/archive/v%{version}.tar.gz
@@ -57,7 +57,8 @@ make CFLAGS=-Wno-format-truncation
 %{_mandir}/man1/*.1.*
 
 %changelog
-* Mon Jun 15 2020 Quentin Dufour <quentin@dufour.io> - 9.5.2-2
+* Mon Jun 15 2020 Quentin Dufour <quentin@dufour.io> - 9.5.2-1
+- Upgrade sources from 9.5 to 9.5.2. Changelog is avalaible here: https://github.com/cisco/ChezScheme/blob/v9.5.2/LOG
 - Patch makefile to fix binary stripping on fedora rawhide that causes a fatal error
 
 * Mon Jun 11 2018 Quentin Dufour <quentin@dufour.io> - 9.5-2
