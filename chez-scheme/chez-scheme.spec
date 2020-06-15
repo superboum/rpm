@@ -3,8 +3,8 @@
 
 Name:           chez-scheme
 Summary:        Chez Scheme is an efficient and reliable implementation of Scheme based on an incremental optimizing compiler that produces efficient code and does so quickly. 
-Version:        9.5
-Release:        2%{?dist}
+Version:        9.5.2
+Release:        1%{?dist}
 URL:            http://cisco.github.io/ChezScheme
 License:        Apache-2.0
 Source0:        https://github.com/cisco/ChezScheme/archive/v%{version}.tar.gz
@@ -14,6 +14,7 @@ BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  curl
 BuildRequires:  ca-certificates
+BuildRequires:  libuuid-devel
 
 %if %is_mageia
 BuildRequires: lib64x11-devel
@@ -21,9 +22,7 @@ BuildRequires: lib64x11-devel
 BuildRequires:  libX11-devel
 %endif
 
-
-Patch0:         chez-scheme-xlocale.patch
-Patch1:         chez-scheme-symlink.patch
+Requires: libuuid
 
 %description
 Chez Scheme is both a programming language and an implementation of that language, with supporting tools and documentation.
@@ -52,10 +51,13 @@ make CFLAGS=-Wno-format-truncation
 %{_bindir}/petite
 %{_bindir}/scheme
 %{_bindir}/scheme-script
-%{_libdir}/csv9.5/*
+%{_libdir}/csv%{version}/*
 %{_mandir}/man1/*.1.*
 
 %changelog
+* Mon Jun 15 2020 Quentin Dufour <quentin@dufour.io> - 9.5.2-1
+- Upgrade sources from 9.5 to 9.5.2. Changelog is avalaible here: https://github.com/cisco/ChezScheme/blob/v9.5.2/LOG
+
 * Mon Jun 11 2018 Quentin Dufour <quentin@dufour.io> - 9.5-2
 - Update symlink patch to use a hard link instead as recommended in https://github.com/cisco/ChezScheme/pull/307
 

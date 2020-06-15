@@ -1,7 +1,7 @@
 ## Build a RPM
 
 ```
-cd ./project
+cd ./<project>
 make -f ../.copr/Makefile
 ```
 
