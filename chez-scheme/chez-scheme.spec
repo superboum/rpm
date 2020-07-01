@@ -44,7 +44,7 @@ The programming environment includes a source-level debugger, a mechanism for pr
 
 %build
 ./configure --installbin=%{_bindir} --installlib=%{_libdir} --installman=%{_mandir} --temproot=%{buildroot} --threads
-make CFLAGS=-Wno-unknown-warning
+make CFLAGS=-w
 
 %install
 %make_install
